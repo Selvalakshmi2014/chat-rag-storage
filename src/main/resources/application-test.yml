@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+logging:
+  file:
+    name: /tmp/app.log
+    max-size: 10MB
+    max-history: 1
+    total-size-cap: 20MB
+
+cors:
+  allowed-origins: http://localhost:3000
+  allowed-methods: GET,POST,PUT,DELETE,PATCH,OPTIONS
+  max-age: 3600
+
+api:
+  rate-limit:
+    capacity: ${RATE_LIMIT_CAPACITY:10}
+    refill-tokens: ${RATE_LIMIT_REFILL_TOKENS:10}
+    refill-duration-minutes: ${RATE_LIMIT_REFILL_DURATION_MINUTES:1}

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Chat Rag Storage
+  profiles:
+    active: local
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    import: optional:file:.env
+  doc:
+    swagger-ui:
+      enabled: true
+
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS}
+  allowed-methods: ${CORS_ALLOWED_METHODS}
+  max-age: ${CORS_MAX_AGE}

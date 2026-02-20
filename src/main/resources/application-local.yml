@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+security:
+  api-key: ${API_KEY}
+
+#Rate Limit
+api:
+  rate-limit:
+    capacity: ${RATE_LIMIT_CAPACITY:10}
+    refill-tokens: ${RATE_LIMIT_REFILL_TOKENS:10}
+    refill-duration-minutes: ${RATE_LIMIT_REFILL_DURATION_MINUTES:1}
+
+#Actuator
+management:
+  endpoint:
+    health:
+      show-details: always
+
+  health:
+    db:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - metrics
+
+#Logging
+logging:
+  file:
+    name: ${LOG_FILE_PATH:/app/logs/app.log}
+    max-size: ${LOG_FILE_MAX_SIZE}
+    max-history: ${LOG_FILE_MAX_HISTORY}
+    total-size-cap: ${LOG_FILE_TOTAL_SIZE_CAPACITY}
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%level] [%thread] %logger{36} - %msg%n"
+  level:
+    root: INFO
+
+
+
