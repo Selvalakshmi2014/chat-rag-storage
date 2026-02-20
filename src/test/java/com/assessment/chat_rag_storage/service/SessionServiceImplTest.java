@@ -52,7 +52,7 @@ class SessionServiceImplTest {
 
 		var response = sessionService.updateFavorite(sessionId, true);
 
-		assertTrue(response.getFavorite());
+		assertTrue(response.isFavorite());
 		verify(sessionRepository).save(session);
 	}
 

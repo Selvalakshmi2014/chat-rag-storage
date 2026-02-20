@@ -19,6 +19,6 @@ public class SessionResponseDto {
 
 	private String userId;
 
-	private Boolean favorite;
+	private boolean favorite;
 
 }

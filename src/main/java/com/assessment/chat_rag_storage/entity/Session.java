@@ -33,7 +33,7 @@ public class Session {
 	private String sessionName;
 
 	@Column(name = "is_favorite")
-	private Boolean favorite = false;
+	private boolean favorite = false;
 
 	@CreationTimestamp
 	@Column(name = "created_at", updatable = false)

@@ -80,7 +80,7 @@ public class SessionServiceImpl implements SessionService {
 			.id(session.getId())
 			.userId(session.getUserId())
 			.sessionName(session.getSessionName())
-			.favorite(session.getFavorite())
+			.favorite(session.isFavorite())
 			.build();
 	}
 
