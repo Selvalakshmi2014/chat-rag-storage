@@ -5,46 +5,34 @@ This backend microservice stores and manages chat histories for a Retrieval-Augm
 It provides:
 
 * User chat sessions with messages
-* 
-* Session management (rename, favorite, delete)
-* 
+*  Session management (rename, favorite, delete)
 * Pagination for messages
-* 
 * Secure API access using API key authentication
-* 
 * Rate limiting to prevent abuse
-* 
 * Dockerized setup for local development
-* 
 * Tech Stack: Java 21, Spring Boot, PostgreSQL, Docker, Maven
 
-**Features**
+**Features**:
 
 * Session Management: Create, rename, mark favorite, delete sessions
-* 
-* Message Storage: Store messages with sender type (USER/AI), content, and optional context
-* 
-* Pagination: Retrieve messages using page and size parameters
-* 
-* Security: API key authentication and rate limiting
-* 
-* Logging: Centralized logging with configurable log file rotation
-* 
-* Health Check: /actuator/health endpoint
-* 
-* Dockerized: App, PostgreSQL, and pgAdmin for easy setup
+*  Message Storage: Store messages with sender type (USER/AI), content, and optional context
+*  Pagination: Retrieve messages using page and size parameters
+*  Security: API key authentication and rate limiting
+*  Logging: Centralized logging with configurable log file rotation
+*  Health Check: /actuator/health endpoint
+*  Dockerized: App, PostgreSQL, and pgAdmin for easy setup
 
-**Setup & Docker**
+**Setup & Docker**:
 1. Clone the Repository
    git clone <repo_url>
    cd <repo_folder>
 2. Configure Environment
    cp .env.example .env
 
-Edit .env to set environment variables:
-DB_URL, DB_USERNAME, DB_PASSWORD, DB_NAME – Database connection
-API_KEY – API key for secure requests
-Logging and rate-limit settings as needed
+        Note: Edit .env to set environment variables:
+        DB_URL, DB_USERNAME, DB_PASSWORD, DB_NAME – Database connection
+        API_KEY – API key for secure requests
+        Logging and rate-limit settings as needed
 
 3. Start Services with Docker:   
    docker-compose up --build -d
@@ -57,13 +45,13 @@ Logging and rate-limit settings as needed
 
 **pgAdmin Login:**
 
-Email: admin@local.com
+    Email: admin@local.com
 
-Password: admin
+    Password: admin
 
-Host: db, Port: 5432
+    Host: db, Port: 5432
 
-The docker-compose.yml in the project root defines all services. No additional setup is required.
+    The docker-compose.yml in the project root defines all services. No additional setup is required.
 
 **API Endpoints**
 **Sessions**
@@ -80,23 +68,23 @@ The docker-compose.yml in the project root defines all services. No additional s
 | GET    | `/api/v1/messages/{session_id}?page=0&size=10` | Retrieve paginated messages |
 | POST   | `/api/v1/messages`                             | Add message to a session    |
 
-Note: All API requests require header: X-API-KEY: <your-api-key>
-**Health Check:** 
+    Note: All API requests require header: X-API-KEY: <your-api-key>
+**Health Check:**      
 GET /actuator/health
 Returns the health status of the service and database connectivity.
 
-**Swagger Doc:**
+**Swagger Doc:**  
 GET /swagger-ui/index.html
 
-**Testing:**
+**Testing:**  
 Unit tests are implemented for services:
  mvn clean test
 
 **Architecture:**  
 Client → API → Service → Repository → PostgreSQL   
 
-Controller: Handles HTTP requests
-Service: Contains business logic
+Controller: Handles HTTP requests  
+Service: Contains business logic  
 Repository: Handles database operations
 
 **Feature:**
